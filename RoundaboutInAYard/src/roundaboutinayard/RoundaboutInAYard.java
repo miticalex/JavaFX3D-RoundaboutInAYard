@@ -6,11 +6,8 @@
 package roundaboutinayard;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -18,23 +15,14 @@ import javafx.stage.Stage;
  * @author AM
  */
 public class RoundaboutInAYard extends Application {
+    private static final double WINDOW_WIDTH = 1200;
+    private static final double WINDOW_HEIGHT = 700;
+    
+    Group root = new Group();
     
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
