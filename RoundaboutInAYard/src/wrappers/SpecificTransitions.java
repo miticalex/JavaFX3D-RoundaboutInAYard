@@ -19,7 +19,7 @@ public abstract class SpecificTransitions {
     public static final double COMPLETE_ANGLE = FULL_ANGLE;
     public static final double COMPLETE_ROTATION = FULL_ANGLE;
     
-    public RotateTransition infiniteRotateTransition(Duration period, Group object, int direction, Point3D axis){
+    public static final RotateTransition infiniteRotateTransition(Duration period, int direction, Point3D axis, Group object){
         RotateTransition rotation = new RotateTransition(period, object);
         rotation.setAxis(axis);
         rotation.setFromAngle(ZERO);
@@ -30,7 +30,7 @@ public abstract class SpecificTransitions {
         return rotation;
     }
     
-    public RotateTransition infiniteRotateTransition(double period, int direction, Point3D axis, Group object){
-        return infiniteRotateTransition(Duration.seconds(period), object, direction, axis);
+    public static final RotateTransition infiniteRotateTransition(double period, int direction, Point3D axis, Group object){
+        return infiniteRotateTransition(Duration.seconds(period), direction, axis, object);
     }
 }
