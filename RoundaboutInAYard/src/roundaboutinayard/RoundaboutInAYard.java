@@ -19,9 +19,6 @@ public class RoundaboutInAYard extends Application {
     private static final double WINDOW_WIDTH = 1200;
     private static final double WINDOW_HEIGHT = 700;
     
-    private static final double POSITIVE_ROTATION = 1;
-    private static final double NEGATIVE_ROTATION = -1;
-    
     private static final double TURNTABLE_R = 200;
     private static final double TURNTABLE_H = 20;
     private static final double TURNTABLE_ROTATION_PERIOD = 10;
