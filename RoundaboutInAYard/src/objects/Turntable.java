@@ -16,7 +16,7 @@ public class Turntable extends Cylinder{
         return rotation;
     }
 
-    public void setRotation(double rotationPeriod, int rotationDirection) {
+    public void setInfiniteRotate(double rotationPeriod, int rotationDirection) {
         rotation = SpecificTransitions.infiniteRotateTransition(rotationPeriod, rotationDirection, Rotate.Y_AXIS, this);
         rotation.play();
     }

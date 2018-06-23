@@ -8,8 +8,12 @@ package roundaboutinayard;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.stage.Stage;
+import objects.Turntable;
+import wrappers.SpecificTransitions;
 
 /**
  *
@@ -38,9 +42,18 @@ public class RoundaboutInAYard extends Application {
     private static final double POINT_LIGHT_HEIGHT = -100; 
     
     Group root = new Group();
+    Turntable turntable;
 
     private void addTurntable() {
+        turntable = new Turntable(TURNTABLE_R, TURNTABLE_H);
+        turntable.setInfiniteRotate(TURNTABLE_ROTATION_PERIOD, SpecificTransitions.POSITIVE_ROTATION);
         
+        Image image = new Image("metal.jpg");
+        
+        PhongMaterial material = new PhongMaterial();
+        material.setDiffuseMap(image);
+        
+        root.getChildren().add(turntable);
     }
     
     @Override
