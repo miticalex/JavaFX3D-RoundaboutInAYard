@@ -7,10 +7,14 @@ package roundaboutinayard;
 
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import objects.Turntable;
 import wrappers.SpecificTransitions;
@@ -41,9 +45,21 @@ public class RoundaboutInAYard extends Application {
     
     private static final double POINT_LIGHT_HEIGHT = -100; 
     
-    Group root = new Group();
-    Turntable turntable;
+    private Group root = new Group();
+    private PerspectiveCamera perspectiveCamera;
+    
+    private Turntable turntable;
 
+    private PerspectiveCamera makePerspectiveCamera(){
+        PerspectiveCamera camera = new PerspectiveCamera(true);
+        camera.setFarClip(1000.0);
+        Translate translate = new Translate(0, 0, -800.0);
+        Rotate rotate = new Rotate(-30.0, Rotate.X_AXIS);
+        camera.getTransforms().addAll(rotate,translate);
+        
+        return camera;
+    }
+    
     private void addTurntable() {
         turntable = new Turntable(TURNTABLE_R, TURNTABLE_H);
         turntable.setInfiniteRotate(TURNTABLE_ROTATION_PERIOD, SpecificTransitions.POSITIVE_ROTATION);
@@ -52,15 +68,18 @@ public class RoundaboutInAYard extends Application {
         
         PhongMaterial material = new PhongMaterial();
         material.setDiffuseMap(image);
+        turntable.setMaterial(material);
         
         root.getChildren().add(turntable);
     }
     
     @Override
     public void start(Stage primaryStage) {
+        perspectiveCamera = makePerspectiveCamera();
         addTurntable();
         
-        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT, true, SceneAntialiasing.BALANCED);
+        scene.setCamera(perspectiveCamera);
         
         primaryStage.setTitle("Roundabout In The Yard!");
         primaryStage.setScene(scene);
