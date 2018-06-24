@@ -32,17 +32,6 @@ public class RoundaboutInAYard extends Application {
     private static final double TURNTABLE_ROTATION_PERIOD = 10;
     private static final Color TURNTABLE_COLOR = Color.TURQUOISE;
     
-    private static final double CHAIR_WIDTH = 40; 
-    private static final double CHAIR_HEIGHT = 20;
-    private static final Color CHAIR_COLOR = Color.ORANGE;
-    
-    private static final double CHAIR_STAND_R = 40;
-    private static final double CHAIR_STAND_H = 10;
-    private static final double CHAIR_STAND_ROTATION_PERIOD = 3;
-    
-    private static final double CHAIR_REST_HEIGHT = 20; 
-    private static final double CHAIR_REST_THICKNESS = 10;
-    
     private static final double POINT_LIGHT_HEIGHT = -100; 
     
     private Group root = new Group();
