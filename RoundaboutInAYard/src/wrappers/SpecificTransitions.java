@@ -4,7 +4,7 @@ import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Point3D;
-import javafx.scene.shape.Shape3D;
+import javafx.scene.Node;
 import javafx.util.Duration;
 
 /**
@@ -23,9 +23,8 @@ public abstract class SpecificTransitions {
     public static final int COUNTERCLOCKWISE_ROTATION = 1;
     public static final int CLOCKWISE_ROTATION = - 1;
     
-    public static final RotateTransition infiniteRotateTransition(Duration period, int direction, Point3D axis, Shape3D object){
+    public static final RotateTransition infiniteRotateTransition(Duration period, int direction, Node object){
         RotateTransition rotation = new RotateTransition(period, object);
-        rotation.setAxis(axis);
         rotation.setFromAngle(ZERO);
         rotation.setByAngle(direction<0 ? -FULL_ANGLE : FULL_ANGLE);
         rotation.setInterpolator(Interpolator.LINEAR);
@@ -34,7 +33,18 @@ public abstract class SpecificTransitions {
         return rotation;
     }
     
-    public static final RotateTransition infiniteRotateTransition(double period, int direction, Point3D axis, Shape3D object){
+    public static final RotateTransition infiniteRotateTransition(double period, int direction, Node object){
+        return infiniteRotateTransition(Duration.seconds(period), direction, object);
+    }
+    
+    public static final RotateTransition infiniteRotateTransition(Duration period, int direction, Point3D axis, Node object){
+        RotateTransition infiniteRotateTransition = infiniteRotateTransition(period, direction, object);
+        infiniteRotateTransition.setAxis(axis);
+        
+        return infiniteRotateTransition;
+    }
+    
+    public static final RotateTransition infiniteRotateTransition(double period, int direction, Point3D axis, Node object){
         return infiniteRotateTransition(Duration.seconds(period), direction, axis, object);
     }
 }
