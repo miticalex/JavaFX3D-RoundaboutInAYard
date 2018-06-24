@@ -23,7 +23,7 @@ public class Turntable extends Group{
     }
 
     public void setInfiniteRotate(double rotationPeriod, int rotationDirection) {
-        rotation = SpecificTransitions.infiniteRotateTransition(rotationPeriod, rotationDirection, Rotate.Y_AXIS, podium);
+        rotation = SpecificTransitions.infiniteRotateTransition(rotationPeriod, rotationDirection, Rotate.Y_AXIS, this);
         rotation.play();
     }
     
