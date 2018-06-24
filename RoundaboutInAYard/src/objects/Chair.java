@@ -10,7 +10,7 @@ import javafx.scene.shape.Cylinder;
  *
  * @author AM
  */
-public class Chair extends Group{
+public class Chair extends RotatingGroup{
     public static final double CHAIR_WIDTH = 40; 
     public static final double CHAIR_SEATING_HEIGHT = 20;
     public static final Color CHAIR_COLOR = Color.ORANGE;
@@ -24,7 +24,7 @@ public class Chair extends Group{
 
     private Cylinder chairStand;
     private Box chairSeating;
-
+    
     public Cylinder getChairStand() {
         return chairStand;
     }
@@ -57,7 +57,7 @@ public class Chair extends Group{
         chairSeating.setTranslateY(-(CHAIR_STAND_HEIGHT/2 + CHAIR_SEATING_HEIGHT/2));
         chairSeating.setMaterial(chairMaterial);
         
-        chairRest = new Box(CHAIR_WIDTH, CHAIR_REST_THICKNESS, CHAIR_REST_HEIGHT);
+        chairRest = new Box(CHAIR_WIDTH, CHAIR_REST_HEIGHT, CHAIR_REST_THICKNESS);
         chairRest.setTranslateY(-(CHAIR_STAND_HEIGHT/2 + CHAIR_SEATING_HEIGHT
                 + CHAIR_REST_HEIGHT/2));
         chairRest.setTranslateZ(CHAIR_WIDTH/2 - CHAIR_REST_THICKNESS/2);
