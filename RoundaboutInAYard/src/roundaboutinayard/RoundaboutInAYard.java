@@ -64,11 +64,11 @@ public class RoundaboutInAYard extends Application {
         turntable = new Turntable(TURNTABLE_R, TURNTABLE_H);
         turntable.setInfiniteRotate(TURNTABLE_ROTATION_PERIOD, SpecificTransitions.POSITIVE_ROTATION);
         
-        Image image = new Image("metal.jpg");
-        
-        PhongMaterial material = new PhongMaterial();
-        material.setDiffuseMap(image);
-        turntable.setMaterial(material);
+//        Image image = new Image("metal.jpg");
+//        
+//        PhongMaterial material = new PhongMaterial();
+//        material.setDiffuseMap(image);
+//        turntable.setMaterial(material);
         
         root.getChildren().add(turntable);
     }
