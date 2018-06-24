@@ -16,6 +16,7 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
+import objects.Chair;
 import objects.Turntable;
 import wrappers.SpecificTransitions;
 
@@ -62,10 +63,15 @@ public class RoundaboutInAYard extends Application {
         root.getChildren().add(turntable);
     }
     
+    private void addChair(){
+        root.getChildren().add(new Chair());
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         perspectiveCamera = makePerspectiveCamera();
         addTurntable();
+        addChair();
         
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT, true, SceneAntialiasing.BALANCED);
         scene.setCamera(perspectiveCamera);
