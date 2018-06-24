@@ -1,10 +1,7 @@
 package objects;
 
-import javafx.animation.RotateTransition;
-import javafx.scene.Group;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Cylinder;
-import javafx.scene.transform.Rotate;
-import wrappers.SpecificTransitions;
 
 /**
  *
@@ -16,7 +13,10 @@ public class Turntable extends RotatingGroup{
         return podium;
     }
     
+    public void setMaterial(PhongMaterial material) { podium.setMaterial(material); }
+    
     public Turntable(double radius, double height){
         podium = new Cylinder(radius, height, 100);
+        this.getChildren().add(podium);
     }
 }
