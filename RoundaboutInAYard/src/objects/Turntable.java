@@ -10,21 +10,10 @@ import wrappers.SpecificTransitions;
  *
  * @author AM
  */
-public class Turntable extends Group{
+public class Turntable extends RotatingGroup{
     private Cylinder podium;
-    private RotateTransition rotation = new RotateTransition();
-
     public Cylinder getPodium() {
         return podium;
-    }
-    
-    public RotateTransition getRotation() {
-        return rotation;
-    }
-
-    public void setInfiniteRotate(double rotationPeriod, int rotationDirection) {
-        rotation = SpecificTransitions.infiniteRotateTransition(rotationPeriod, rotationDirection, Rotate.Y_AXIS, this);
-        rotation.play();
     }
     
     public Turntable(double radius, double height){

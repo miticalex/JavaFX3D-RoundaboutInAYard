@@ -5,7 +5,9 @@
  */
 package roundaboutinayard;
 
+import javafx.animation.RotateTransition;
 import javafx.application.Application;
+import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
@@ -50,28 +52,47 @@ public class RoundaboutInAYard extends Application {
         return camera;
     }
     
-    private void addTurntable() {
-        turntable = new Turntable(TURNTABLE_R, TURNTABLE_H);
-        turntable.setInfiniteRotate(TURNTABLE_ROTATION_PERIOD, SpecificTransitions.POSITIVE_ROTATION);
-        
-//        Image image = new Image("metal.jpg");
+//    private Turntable makeTurntableWithChairs(int numChairs) {
+//        Turntable turntable = new Turntable(TURNTABLE_R, TURNTABLE_H);
+//        turntable.setInfiniteRotation(TURNTABLE_ROTATION_PERIOD, SpecificTransitions.POSITIVE_ROTATION);
 //        
-//        PhongMaterial material = new PhongMaterial();
-//        material.setDiffuseMap(image);
-//        turntable.setMaterial(material);
-        
-        root.getChildren().add(turntable);
-    }
+//        Chair[] chairs = new Chair[numChairs];
+//        
+//        for (int i = 0; i < numChairs; i++) {
+//            chairs[i] = new Chair();
+//            turntable.getChildren().add(chairs[i]);
+//            
+//            chairs[i].setTranslateY(TURNTABLE_R/2 + Chair.CHAIR_STAND_HEIGHT/2);
+//            chairs[i].setRotationAxis(Rotate.Y_AXIS);
+//            chairs[i].setRotate(i*SpecificTransitions.FULL_ROTATION / numChairs);
+//            chairs[i].setTranslateX(0.75 * TURNTABLE_R);
+//            
+//            chairs[i].setInfiniteRotation(Chair.CHAIR_STAND_ROTATION_PERIOD, SpecificTransitions.CLOCKWISE_ROTATION);
+//        }
+//        
+////        Image image = new Image("metal.jpg");
+////        
+////        PhongMaterial material = new PhongMaterial();
+////        material.setDiffuseMap(image);
+////        turntable.setMaterial(material);
+//        
+//        root.getChildren().add(turntable);
+//        
+//        return turntable;
+//    }
     
     private void addChair(){
-        root.getChildren().add(new Chair());
+        Chair chair = new Chair();
+        chair.setInfiniteRotation(Chair.CHAIR_STAND_ROTATION_PERIOD, SpecificTransitions.POSITIVE_ROTATION);
+        root.getChildren().add(chair);
     }
     
     @Override
     public void start(Stage primaryStage) {
         perspectiveCamera = makePerspectiveCamera();
-        addTurntable();
+//        turntable = makeTurntableWithChairs(4);
         addChair();
+
         
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT, true, SceneAntialiasing.BALANCED);
         scene.setCamera(perspectiveCamera);

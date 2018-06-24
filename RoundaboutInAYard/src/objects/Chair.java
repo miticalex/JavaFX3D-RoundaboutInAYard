@@ -48,6 +48,8 @@ public class Chair extends RotatingGroup{
     private Box chairRest;
     
     public Chair(){
+        super();
+        
         PhongMaterial chairMaterial = new PhongMaterial(CHAIR_COLOR);
         
         chairStand = new Cylinder(CHAIR_STAND_RADIUS, CHAIR_STAND_HEIGHT, 100);
