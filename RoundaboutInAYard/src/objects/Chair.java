@@ -1,10 +1,17 @@
 package objects;
 
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Cylinder;
+import javafx.util.Duration;
+import wrappers.SpecificTransitions;
+import static wrappers.SpecificTransitions.FULL_ANGLE;
+import static wrappers.SpecificTransitions.ZERO;
 
 /**
  *

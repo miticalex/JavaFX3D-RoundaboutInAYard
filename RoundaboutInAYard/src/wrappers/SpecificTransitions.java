@@ -20,12 +20,11 @@ public abstract class SpecificTransitions {
     
     public static final int POSITIVE_ROTATION = 1;
     public static final int NEGATIVE_ROTATION = -1;
-    public static final int COUNTERCLOCKWISE_ROTATION = 1;
-    public static final int CLOCKWISE_ROTATION = - 1;
+    public static final int COUNTERCLOCKWISE_ROTATION = -1;
+    public static final int CLOCKWISE_ROTATION = 1;
     
     public static final RotateTransition infiniteRotateTransition(Duration period, int direction, Node object){
         RotateTransition rotation = new RotateTransition(period, object);
-        rotation.setFromAngle(ZERO);
         rotation.setByAngle(direction<0 ? -FULL_ANGLE : FULL_ANGLE);
         rotation.setInterpolator(Interpolator.LINEAR);
         rotation.setCycleCount(Animation.INDEFINITE);
