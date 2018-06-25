@@ -6,11 +6,14 @@
 package roundaboutinayard;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.PointLight;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.transform.Rotate;
@@ -93,6 +96,12 @@ public class RoundaboutInAYard extends Application {
         return turntable;
     }
     
+    private void onKeyPressed(KeyEvent e){
+        KeyCode k=e.getCode();
+        
+        if (k==KeyCode.SPACE) pointLight.setLightOn(!pointLight.isLightOn());
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         perspectiveCamera = makePerspectiveCamera();
@@ -101,8 +110,14 @@ public class RoundaboutInAYard extends Application {
         
         root.getChildren().addAll(turntable, pointLight);
         
+        EventHandler<KeyEvent> r = d -> {
+            KeyCode k=d.getCode();
+            if (k==KeyCode.SPACE) pointLight.setLightOn(!pointLight.isLightOn());
+        };
+        
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT, true, SceneAntialiasing.BALANCED);
         scene.setCamera(perspectiveCamera);
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> onKeyPressed(keyEvent));
         
         primaryStage.setTitle("Roundabout In The Yard!");
         primaryStage.setScene(scene);
