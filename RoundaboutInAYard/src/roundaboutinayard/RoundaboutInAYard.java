@@ -8,6 +8,7 @@ package roundaboutinayard;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
+import javafx.scene.PointLight;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.paint.Color;
@@ -33,20 +34,34 @@ public class RoundaboutInAYard extends Application {
     private static final Color TURNTABLE_COLOR = Color.TURQUOISE;
     
     private static final double POINT_LIGHT_HEIGHT = -100; 
+    private static final Color POINT_LIGHT_COLOR = Color.WHITE;
     
     private Group root = new Group();
     private PerspectiveCamera perspectiveCamera;
+    private PointLight pointLight;
     
     private Turntable turntable;
 
     private PerspectiveCamera makePerspectiveCamera(){
         PerspectiveCamera camera = new PerspectiveCamera(true);
+        
         camera.setFarClip(1000.0);
         Translate translate = new Translate(0, 0, -800.0);
         Rotate rotate = new Rotate(-30.0, Rotate.X_AXIS);
         camera.getTransforms().addAll(rotate,translate);
         
         return camera;
+    }
+    
+    private PointLight makePointLight(Color color, double positionX, double positionY, double positionZ){
+        PointLight pointLight = new PointLight();
+        
+        pointLight.setTranslateX(positionX);
+        pointLight.setTranslateY(positionY);
+        pointLight.setTranslateZ(positionZ);
+        pointLight.setColor(Color.WHITE);
+        
+        return pointLight;
     }
     
     private Turntable makeTurntableWithChairs(int numChairs) {
@@ -82,7 +97,9 @@ public class RoundaboutInAYard extends Application {
     public void start(Stage primaryStage) {
         perspectiveCamera = makePerspectiveCamera();
         turntable = makeTurntableWithChairs(4);
-        root.getChildren().add(turntable);
+        pointLight = makePointLight(POINT_LIGHT_COLOR, 0, POINT_LIGHT_HEIGHT, 0);
+        
+        root.getChildren().addAll(turntable, pointLight);
         
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT, true, SceneAntialiasing.BALANCED);
         scene.setCamera(perspectiveCamera);
